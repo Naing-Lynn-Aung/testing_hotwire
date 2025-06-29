@@ -1,0 +1,7 @@
+<%= form_with(model: [ @task.project, task ]) do |form| %>
+    <div class="card card-body bg-light">
+        <%= form.text_area :body, class: "form-control", required: true %>
+        <%= form.select(:status, [['Todo'], ['On-progress'], ['Compeleted']], {}, { :class => 'w-50 my-3 form-select'}) %>
+        <%= form.submit class: 'w-50 btn btn-primary' %>
+    </div>
+<% end %>

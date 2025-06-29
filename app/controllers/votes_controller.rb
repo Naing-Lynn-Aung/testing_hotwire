@@ -2,10 +2,7 @@ class VotesController < ApplicationController
   before_action :set_vote, only: :create
   def create
     @project.increment! :vote
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to projects_path }
-    end
+    redirect_to projects_path
   end
   private
   def set_vote
