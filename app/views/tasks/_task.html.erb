@@ -11,6 +11,16 @@
         </small>
         <small>
             <%= link_to 'Edit', edit_project_task_path(task.project, task) %>
+          <br>
+          <small>Assigned to: </small>
+          <div class="avatar-group">
+            <% task.users.each do |user| %>
+              <small>
+                <b><%= user.name unless user.nil? %></b>
+              </small>
+              |
+            <% end %>
+          </div>
         </small>
       </div>
     </div>

@@ -1,7 +1,10 @@
 <%= form_with(model: [ @task.project, task ]) do |form| %>
     <div class="card card-body bg-light">
         <%= form.text_area :body, class: "form-control", required: true %>
-        <%= form.select(:status, [['Todo'], ['On-progress'], ['Compeleted']], {}, { :class => 'w-50 my-3 form-select'}) %>
+        <div class="d-flex justify-content-between">
+            <%= form.select(:status, [['Todo'], ['On-progress'], ['Compeleted']], {}, { :class => 'w-50 my-3 form-select'}) %>
+            <%= form.collection_select(:user_ids, User.all, :id, :name, {}, multiple: true, size: User.all.length, class: "ms-2") %>
+        </div>
         <%= form.submit class: 'w-50 btn btn-primary' %>
     </div>
 <% end %>
