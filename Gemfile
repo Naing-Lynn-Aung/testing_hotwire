@@ -58,5 +58,4 @@ end
 
 gem "hotwire-rails", "~> 0.1.3"
 gem "devise"
-
 gem "hotwire-livereload", "~> 2.0"

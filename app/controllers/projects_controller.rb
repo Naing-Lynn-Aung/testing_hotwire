@@ -41,7 +41,11 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy!
-    redirect_to projects_path, notice: "Project was successfully deleted"
+    @projects = Project.all
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to projects_path }
+    end
   end
 
   private
