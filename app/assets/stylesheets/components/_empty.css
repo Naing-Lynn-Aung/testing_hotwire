@@ -1,0 +1,15 @@
+.empty {
+  display: block;
+  padding: 10px;
+  border: 2px dashed gray;
+  text-align: center;
+  border-radius: 10px;
+  margin: 1rem;
+}
+
+.empty-text {
+  font-size: 14px;
+  color: darkgray;
+  margin-bottom: 10px;
+  font-weight: bold;
+}

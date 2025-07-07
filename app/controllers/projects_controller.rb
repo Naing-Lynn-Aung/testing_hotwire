@@ -53,6 +53,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
   def project_params
-    params.require(:project).permit(:content, :vote)
+    params.require(:project).permit(:title, :content, :start, :end, :vote)
   end
 end

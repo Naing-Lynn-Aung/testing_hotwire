@@ -19,16 +19,13 @@
   </head>
 
   <body>
-    <div class="container" style="margin:auto; width:600px">
-      <div class="row my-3">
-        <% if signed_in? %>
-          <ul class="nav justify-content-between">
-            <span class="fs-4">Hi <span class="text-primary fs-4"><%= current_user.name %></span></span>
-            <%= link_to "logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-outline-danger" %>
-          </ul>
-        <% end %>
+    <div class="col-6 m-auto">
+      <div class="row mt-2">
+        <%= render partial: 'layouts/nav' %>
       </div>
-      <%= yield %>
+      <div class="container mt-5">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
