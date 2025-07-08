@@ -6,10 +6,10 @@
     </div>
     <div class="card-body">
       <div class="d-flex justify-content-between">
-        <h5 class="card-title"> <%= link_to "#{project.title}", project_path(project), class: "nav-link", data: { turbo: false } %> </h5>
+        <h5 class="card-title"> <%= link_to highlight("#{project.title}", highlight_query), project_path(project), class: "nav-link", data: { turbo: false } %> </h5>
       </div>
       <p class="card-text">
-        <%= project.content.truncate(100)%>
+        <%= highlight(project.content.truncate(100), highlight_query) %>
       </p>
       <div class="d-flex justify-content-between">
         Start From <%= project.start.to_fs(:rfc822) %> to <%= project.end.to_fs(:rfc822) %>
