@@ -20,7 +20,6 @@ class TasksController < ApplicationController
       if @task.update(tasks_params)
         format.html { redirect_to([ @task.project, @task ], notice: "Task was successfully updated") }
       else
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(@task, partial: "tasks/form", locals: { task: @task }) }
         format.html { render :edit }
       end
     end

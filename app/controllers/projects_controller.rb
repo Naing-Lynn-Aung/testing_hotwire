@@ -23,7 +23,6 @@ class ProjectsController < ApplicationController
       if @project.save
         format.html { redirect_to projects_path, notice: "Project was successfully created" }
       else
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(@project, partial: "projects/form", locals: { project: @project }) }
         format.html { render :new, status: :unprocessable_entity }
       end
     end
@@ -34,8 +33,7 @@ class ProjectsController < ApplicationController
       if @project.update(project_params)
         format.html { redirect_to projects_path, notice: "Project was successfully updated" }
       else
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(@project, partial: "projects/form", locals: { project: @project }) }
-        format.html { render :new }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
