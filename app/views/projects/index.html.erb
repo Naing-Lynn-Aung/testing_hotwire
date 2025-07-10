@@ -1,7 +1,11 @@
 <%= turbo_stream_from "projects" %>
-<div class="d-flex justify-content-end mb-2">
+<div class="d-flex justify-content-between mb-2">
+    <%= link_to "12 view", projects_path(limit: 12), class: "nav-link py-2" %>
     <%= link_to "New Project", new_project_path, class: "btn btn-primary text-white", data: { turbo_frame: "project_form" } %>
 </div>
+<small>
+    <%== pagy_info(@pagy, item_name: "Project".pluralize(@pagy.count)) %>
+</small>
 <nav class="navbar bg-light">
     <div class="container-fluid">
         <%= form_with url: "", method: :get, class: "d-flex col-12", data: { turbo_frame: "projects", turbo_action: "advance" } do |f| %>
@@ -15,4 +19,5 @@
         <%= render "empty_state" %>
     <% end %>
     <%= render @projects %>
+    <%== pagy_bootstrap_nav(@pagy) %>
 <% end %>

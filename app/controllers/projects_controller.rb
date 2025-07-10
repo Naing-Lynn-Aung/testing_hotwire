@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @projects = @projects.search(params[:search]) if params[:search].present?
+    @pagy, @projects = pagy @projects
     @project = Project.new
   end
 
