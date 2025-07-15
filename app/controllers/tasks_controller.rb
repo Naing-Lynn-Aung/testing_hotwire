@@ -8,7 +8,7 @@ class TasksController < ApplicationController
       redirect_to project_path(@project)
     else
       flash[:alert] = "Task has not been created"
-      render "project/show"
+      render "projects/show"
     end
   end
 
@@ -26,7 +26,6 @@ class TasksController < ApplicationController
   end
 
   def show
-
   end
 
   def destroy

@@ -1,10 +1,9 @@
-<%= form_with(model: [ @task.project, task ]) do |form| %>
-    <div class="card card-body bg-light">
-        <%= form.text_area :body, class: "form-control", required: true %>
-        <div class="d-flex justify-content-between">
-            <%= form.select(:status, [['Todo'], ['On-progress'], ['Compeleted']], {}, { :class => 'w-50 my-3 form-select'}) %>
-            <%= form.collection_select(:user_ids, User.all, :id, :name, {}, multiple: true, size: User.all.length, class: "ms-2") %>
-        </div>
-        <%= form.submit class: 'w-50 btn btn-primary' %>
-    </div>
+<%= simple_form_for [@task.project, task], 
+    html: { class: "card vertical_form col-lg-12 col-md-8 col-sm-12 p-4 flex-height" } do |form| %>
+    <%# <div class="card card-body bg-light"> %>
+        <%= form.input :body, as: :text, wrapper_html: { class: "col-md-12 col-sm-11" } %>
+        <%= form.input :status, prompt: "Select status", collection: [:todo, :on_progress, :completed] %>
+        <%# <%= form.collection_select(:user_ids, User.all, :id, :name, {}, multiple: true, size: User.all.length, class: "ms-2") %>
+        <%= form.button :submit %>
+    <%# </div> %>
 <% end %>

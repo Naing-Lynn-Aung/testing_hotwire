@@ -1,41 +1,17 @@
 <div class="mt-2">
-  <%= form_with(model: project, id: dom_id(project), html: { class: "card-custom--project card-custom--shadow" }) do |form| %>
-    <% if project.errors.any? %>
-      <div class="alert alert-primary" role="alert">
-        <div style="color: red">
-          <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-          <ul>
-            <% project.errors.each do |error| %>
-              <li><%= error.full_message %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    <% end %>
+  <%= simple_form_for project, html: { id: dom_id(project), class: "card-custom--project card-custom--shadow" } do |form| %>
     <div class="row">
-      <small><%= form.label :title %></small>
-      <%= form.text_field :title, class: "form-control" %>
-      <small><%= form.label :content %></small>
-      <%= form.text_area :content, class: "form-control" %>
+      <%= form.input :title %>
+      <%= form.input :content, as: :text %>
     </div>
     <div class="d-flex justify-content-between">
-      <div>
-        <small><%= form.label :start, "Start Date" %></small>
-        <div class="d-flex">
-          <%= form.date_select(:start, {order: [:day, :month, :year], start_year: Date.current.year}, {class: "form-select"}) %>
-        </div>
-      </div>
-      <div>
-        <small><%= form.label :end, "End Date" %></small>
-        <div class="d-flex">
-          <%= form.date_select(:end, {order: [:day, :month, :year], start_year: Date.current.year}, {class: "form-select"}) %>
-        </div>
-      </div>
+      <%= form.input :start, as: :date, start_year: Date.current.year, order: [:day, :month, :year] %>
+      <%= form.input :end, as: :date, start_year: Date.current.year, order: [:day, :month, :year] %>
     </div>
+    
     <div class="d-flex justify-content-between mt-2">
       <%= link_to sanitize("back"), projects_path, class: "mt-2" %>
-      <%= form.submit class: "btn btn-sm btn-primary" %>
+      <%= form.button :submit %>
     </div>
   <% end  %>
 </div>
